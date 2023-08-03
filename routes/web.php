@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GoodsController;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,5 +33,6 @@ Route::middleware('auth')->group(function() {
 
         Route::resource('/user', UserController::class);
         Route::resource('/category', CategoryController::class);
+        Route::resource('/goods', GoodsController::class);
     });
 });

@@ -9,8 +9,14 @@
       <li class="nav-item nav-category">UI Elements</li>
       <li class="nav-item">
         <a class="nav-link {{ Request()->is('admin/category*') ? 'active' : '' }}" href="{{ route('category.index') }}">
-        <i class="menu-icon mdi mdi-account-circle-outline"></i>
+          <i class="fa-solid fa-sitemap me-2"></i>
           <span class="menu-title">Kategory</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request()->is('admin/goods*') ? 'active' : '' }}" href="{{ route('goods.index') }}">
+          <i class="fa-solid fa-sitemap me-2"></i>
+          <span class="menu-title">Barang</span>
         </a>
       </li>
       <li class="nav-item">

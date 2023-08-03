@@ -52,6 +52,6 @@ class UserController extends Controller
             'email' => $request->email,
         ]);
 
-        return redirect()->route('user.index')->with('success', 'Data Akun Berhasil Di Update');
+        return redirect()->route('user.index')->with('success', 'Data Akun Berhasil Di Ubah');
     }
 }
