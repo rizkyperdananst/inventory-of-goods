@@ -56,7 +56,7 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-12">
-                            <button class="btn btn-primary float-end ms-3">Store</button>
+                            <button class="btn btn-primary float-end ms-3">Update</button>
                             <a href="{{ route('user.index') }}" class="btn btn-secondary float-end">Kembali</a>
                         </div>
                     </div>

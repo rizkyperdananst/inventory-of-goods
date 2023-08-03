@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Auth\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,9 @@ Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('au
 Route::middleware('auth')->group(function() {
     Route::prefix('/admin')->group(function() {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
         Route::resource('/user', UserController::class);
+        Route::resource('/category', CategoryController::class);
     });
 });

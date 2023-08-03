@@ -1,12 +1,18 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('dashboard') }}">
+        <a class="nav-link {{ Request()->is('admin/dashboard*') ? 'active' : '' }}" href="{{ route('dashboard') }}">
           <i class="mdi mdi-grid-large menu-icon"></i>
           <span class="menu-title">Dashboard</span>
         </a>
       </li>
       <li class="nav-item nav-category">UI Elements</li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request()->is('admin/category*') ? 'active' : '' }}" href="{{ route('category.index') }}">
+        <i class="menu-icon mdi mdi-account-circle-outline"></i>
+          <span class="menu-title">Kategory</span>
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <i class="menu-icon mdi mdi-floor-plan"></i>
