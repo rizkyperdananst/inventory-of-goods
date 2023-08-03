@@ -21,6 +21,9 @@
   <link rel="stylesheet" href="{{ url('assets/css/vertical-layout-light/style.css') }}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ url('assets/images/favicon.png') }}" />
+
+  @stack('styles')
+
 </head>
 <body>
   <div class="container-scroller">
@@ -231,6 +234,8 @@
   <!-- End custom js for this page-->
 
   <script src="https://kit.fontawesome.com/e7f5845a19.js" crossorigin="anonymous"></script>
+
+  @stack('scripts')
 
 </body>
 
