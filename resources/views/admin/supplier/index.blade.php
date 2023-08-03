@@ -17,7 +17,7 @@
         <div class="card shadow">
             <div class="card-header d-flex justify-content-between">
                 <h4>Index Supplier</h4>
-                <a href="#" class="btn btn-primary"><i class="fa-regular fa-plus me-2"></i>Create</a>
+                <a href="{{ route('supplier.create') }}" class="btn btn-primary"><i class="fa-regular fa-plus me-2"></i>Create</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -27,27 +27,25 @@
                                 <th>No</th>
                                 <th>Nama Supplier</th>
                                 <th>Telepon</th>
-                                <th>Transaksi</th>
                                 <th>Alamat</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        {{-- <tbody>
+                        <tbody>
                             @php
                                 $no = 1;
                             @endphp
-                            @forelse ($goods as $g)
+                            @forelse ($suppliers as $s)
                             <tr>
                                 <td width="5%"">{{ $no++ }}</td>
-                                <td>{{ $g->categories->nama_kategori }}</td>
-                                <td>{{ $g->nama_barang }}</td>
-                                <td>@currency($g->harga)</td>
-                                <td>{{ $g->stok }}</td>
+                                <td>{{ $s->nama_supplier }}</td>
+                                <td>{{ $s->telepon }}</td>
+                                <td>{{ $s->alamat }}</td>
                                 <td width="8%">
-                                    <a href="#" class="btn btn-warning">
+                                    <a href="{{ route('supplier.edit', $s->id) }}" class="btn btn-warning">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
-                                    <form action="#" method="POST" class="d-inline">
+                                    <form action="{{ route('supplier.destroy', $s->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger"><i class="fa-sharp fa-solid fa-trash"></i></button>
@@ -57,7 +55,7 @@
                             @empty
                                 <p>Data Kosong</p>
                             @endforelse
-                        </tbody> --}}
+                        </tbody>
                     </table>
                 </div>
             </div>
