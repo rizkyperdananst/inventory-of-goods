@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BuyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -36,5 +37,6 @@ Route::middleware('auth')->group(function() {
         Route::resource('/category', CategoryController::class);
         Route::resource('/goods', GoodsController::class);
         Route::resource('/supplier', SupplierController::class);
+        Route::resource('/buy', BuyController::class);
     });
 });
