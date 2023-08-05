@@ -46,10 +46,48 @@ class BuyController extends Controller
 
     public function edit($id)
     {
-        $buy = Buy::findOrFail($id);
+        $b = Buy::findOrFail($id);
+        // dd($b->jumlah);
         $suppliers = Supplier::orderBy('nama_supplier', 'asc')->get();
         $goods = Goods::orderBy('nama_barang', 'asc')->get();
 
-        return view('admin.buy.edit', compact('buy', 'suppliers', 'goods'));
+        return view('admin.buy.edit', compact('b', 'suppliers', 'goods'));
+    }
+
+    public function update(BuyRequest $buyRequest, $id)
+    {
+        $validated = $buyRequest->validated();
+        
+        $stokInDatabase = Goods::where('id', $buyRequest->goods_id)->pluck('stok')->first();
+
+        $b = Buy::find($id);
+        $stokOld = $stokInDatabase + $b->jumlah;
+
+        if($buyRequest->jumlah) {
+            $stok = $stokOld - $buyRequest->jumlah;
+            Goods::find($buyRequest->goods_id)->update([
+                'stok' => $stok
+            ]);
+        }
+
+        $buy = Buy::find($id)->update($validated);
+
+        return redirect()->route('buy.index')->with('success', 'Data berhasil diubah');
+    }
+
+    public function destroy($id)
+    {
+        $buy = Buy::findOrFail($id);
+
+        $stokInDatabase = Goods::where('id', $buy->goods_id)->pluck('stok')->first();
+
+        $stokOld = $stokInDatabase + $buy->jumlah;
+        Goods::find($buy->goods_id)->update([
+            'stok' => $stokOld
+        ]);
+
+        $buy->delete();
+
+        return redirect()->route('buy.index')->with('success', 'Data berhasil dihapus');
     }
 }

@@ -41,13 +41,13 @@
                                 <td width="5%"">{{ $no++ }}</td>
                                 <td>{{ $b->suppliers->nama_supplier }}</td>
                                 <td>{{ $b->goods->nama_barang }}</td>
-                                <td>{{ $b->tanggal }}</td>
+                                <td>{{ \Carbon\Carbon::parse($b->tanggal)->format('d/m/Y')}}</td>
                                 <td>{{ $b->jumlah }}</td>
                                 <td width="8%">
                                     <a href="{{ route('buy.edit', $b->id) }}" class="btn btn-warning">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
-                                    <form action="#" method="POST" class="d-inline">
+                                    <form action="{{ route('buy.destroy', $b->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger"><i class="fa-sharp fa-solid fa-trash"></i></button>
